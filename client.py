@@ -2,14 +2,14 @@ import socket,sys,select
 s = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 HOST ='18.219.51.6'
 PORT = 4711
-s.settimeout(0)
+s.settimeout(1)
 s.connect(('18.219.51.6',4711))
 print("Connected to server")
 name = raw_input("Enter nickname: ")
 s.send(name)
 sys.stdout.write("You: ")
 sys.stdout.flush()
-while true :
+while 1 :
 	sock_list = [sys.stdin,s]
 	r_list,w_list,e_list = select.select(sock_list,[], [] )
 	for i in r_list:
