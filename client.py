@@ -8,7 +8,7 @@ print("Connected to server")
 name = input("Enter nickname: ")
 s.send(name.encode('utf-8'))
 while 1 :
-	sock_list = [socket.socket(),s]
+	sock_list = [sys.stdin,s]
 	r_list,w_list,e_list = select.select(sock_list,[], [] )
 	for i in r_list:
 		if i == s:
@@ -17,7 +17,7 @@ while 1 :
 			if not msg_rcv:
 				print("DISCONNECTED")
 				sys.exit()
-			else:
+		else:
 				msg = sys.stdin.readline()
 				s.send(msg.encode('utf-8'))
 				sys.stdout.write(msg_rcv.decode('utf-8'))
