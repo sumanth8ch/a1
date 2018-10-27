@@ -25,15 +25,15 @@ while 1 :
                 sys.exit()
             else:
                     sys.stdout.write(msg_rcv)
-                sys.stdout.write("You: ")
-                sys.stdout.flush()
+                    sys.stdout.write("You: ")
+                    sys.stdout.flush()
 
 
 
         else:
                 msg = sys.stdin.readline()
-            ms ='MSG ' + msg
-            s.send(ms.encode('utf-8'))
-            sys.stdout.flush()
+                ms ='MSG ' + msg
+                s.send(ms.encode('utf-8'))
+                sys.stdout.flush()
 
 s.close()
