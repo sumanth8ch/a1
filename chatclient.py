@@ -12,7 +12,7 @@ s.connect((HOST,PORT))
 print("Connected to server")
 nick = 'NICK '+ nickname
 s.send(nick)
-
+a =''
 
 while 1 :
     sock_list = [sys.stdin,s]
@@ -24,16 +24,21 @@ while 1 :
                 print("DISCONNECTED")
                 sys.exit()
             else:
-                    sys.stdout.write(msg_rcv)
-                    sys.stdout.write("You: ")
-                    sys.stdout.flush()
-
+                    if msg_rcv != 'MSG '+nickname+' '+a :
+                        sys.stdout.write(msg_rcv.strip('MSG '))
+                        sys.stdout.flush()
+                    else :
+                        continue
 
 
         else:
+                a = ''
                 msg = sys.stdin.readline()
+                a += msg
                 ms ='MSG ' + msg
                 s.send(ms.encode('utf-8'))
+                sys.stdout.write("You : ")
+                sys.stdout.write(msg)
                 sys.stdout.flush()
 
 s.close()
